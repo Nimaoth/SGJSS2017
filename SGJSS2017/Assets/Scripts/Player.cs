@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
     public float xAxisWrap = 10;
     private Vector3 velocity;
     private Rigidbody playerRigid;
+    public string horizontal, vertical;
+
 
     // Use this for initialization
     void Start () {
@@ -20,8 +22,8 @@ public class Player : MonoBehaviour {
         //player Movement
         #region PlayerMovement
         //Move player based on user input
-        float amtToMove = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
-        float amtToMoveUp = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
+        float amtToMove = Input.GetAxis(horizontal) * playerSpeed * Time.deltaTime;
+        float amtToMoveUp = Input.GetAxis(vertical) * playerSpeed * Time.deltaTime;
 
 
         //transform.Translate(amtToMove * Vector3.right, Space.World);
