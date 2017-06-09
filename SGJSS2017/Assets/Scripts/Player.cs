@@ -6,11 +6,14 @@ public class Player : MonoBehaviour {
     public float playerSpeed;
     public static int lives = 3;
     public float xAxisWrap = 10;
+    private Vector3 velocity;
+    private Rigidbody playerRigid;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        playerRigid = GetComponent<Rigidbody>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,8 +23,14 @@ public class Player : MonoBehaviour {
         float amtToMove = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
         float amtToMoveUp = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
 
-        transform.Translate(amtToMove * Vector3.right, Space.World);
-        transform.Translate(amtToMoveUp * Vector3.up, Space.World);
+
+        //transform.Translate(amtToMove * Vector3.right, Space.World);
+        //transform.Translate(amtToMoveUp * Vector3.up, Space.World);
+
+        Vector3 force = new Vector3();
+        force.x = amtToMove;
+        force.y = amtToMoveUp;
+        playerRigid.AddForce(force*100, ForceMode.Acceleration);
 
         //Screen wrap x axis
         if (transform.position.x < -xAxisWrap)
@@ -33,6 +42,9 @@ public class Player : MonoBehaviour {
         {
             transform.position = new Vector3(xAxisWrap, transform.position.x, transform.position.z);
         }
+
+       // transform.Translate(velocity * Time.deltaTime);
+       // velocity = velocity * 0.5f;
         #endregion
     }
 }
