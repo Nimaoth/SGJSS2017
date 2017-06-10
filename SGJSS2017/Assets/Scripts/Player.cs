@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    public GameObject Shockwave;
+
     public float playerSpeed;
     public static int lives = 3;
     public float xAxisWrap = 10;
@@ -10,6 +12,9 @@ public class Player : MonoBehaviour {
     private Rigidbody playerRigid;
     public string horizontal, vertical;
 
+    //for Shot cooldown
+    public float FIRE_COOLDOWN;
+    private float fireTimerCounter;
 
     // Use this for initialization
     void Start () {
@@ -45,8 +50,27 @@ public class Player : MonoBehaviour {
             transform.position = new Vector3(xAxisWrap, transform.position.x, transform.position.z);
         }
 
-       // transform.Translate(velocity * Time.deltaTime);
-       // velocity = velocity * 0.5f;
+        // transform.Translate(velocity * Time.deltaTime);
+        // velocity = velocity * 0.5f;
+        #endregion
+
+        #region Shockwave
+        //Spieler kann sich mit der fire1 (viereck) taste aufblasen und eine Shockwave instantiaten, die nahe Spieler wegstoeßt
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (fireTimerCounter <= 0)
+            {
+                Instantiate(Shockwave, transform.position, Quaternion.identity);
+           
+                fireTimerCounter = FIRE_COOLDOWN;
+            }
+        }
+
+        if (fireTimerCounter >= 0)
+        {
+            fireTimerCounter -= Time.deltaTime;
+        }
+
         #endregion
     }
 }
