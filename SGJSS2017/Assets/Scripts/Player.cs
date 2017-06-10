@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
     public GameObject Shockwave;
 
     public float playerSpeed;
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour {
     private Vector3 velocity;
     private Rigidbody playerRigid;
     public string horizontal, vertical, fire;
+
+    private Transform ModelTransform;
 
     //for Shot cooldown
     public float FIRE_COOLDOWN;
@@ -30,53 +33,38 @@ public class Player : MonoBehaviour {
     };
 
     public State state = State.Playing;
-    
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         playerRigid = GetComponent<Rigidbody>();
-
+        ModelTransform = transform.Find("Model");
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         {
-
+            #region Player Movement
             //player Movement
-            #region PlayerMovement
-            //Move player based on user input
-            float amtToMove = Input.GetAxis(horizontal) * playerSpeed * Time.deltaTime;
-            float amtToMoveUp = Input.GetAxis(vertical) * playerSpeed * Time.deltaTime;
-
-
-            //transform.Translate(amtToMove * Vector3.right, Space.World);
-            //transform.Translate(amtToMoveUp * Vector3.up, Space.World);
-
             Vector3 force = new Vector3();
-            force.x = amtToMove;
-            force.y = amtToMoveUp;
-            playerRigid.AddForce(force*100, ForceMode.Acceleration);
+            force.x = Input.GetAxis(horizontal) * playerSpeed * Time.deltaTime;
+            force.y = Input.GetAxis(vertical) * playerSpeed * Time.deltaTime;
+            playerRigid.AddForce(force * 150, ForceMode.Acceleration);
 
-            //Screen wrap x axis
-
+            // dont move outside of screen
             if (transform.position.y > yAxisWrap)
-            {
-                //transform.position = new Vector3(transform.position.x, yAxisWrap, transform.position.z);
-                Push(new Vector3(0, -10, 0));
-            }
+                Push(new Vector3(0, -0.5f * playerRigid.velocity.magnitude, 0));
+                //playerRigid.velocity = new Vector3(playerRigid.velocity.x, -playerRigid.velocity.y, playerRigid.velocity.z);
 
             if (transform.position.y < -yAxisWrap)
-            {
-                //transform.position = new Vector3(transform.position.x, -yAxisWrap, transform.position.z);
-                Push(new Vector3(0, 10, 0));
-            }
+                Push(new Vector3(0, 0.5f * playerRigid.velocity.magnitude, 0));
 
             // direction
-            if (playerRigid.velocity.magnitude > 0.01f)
-                transform.rotation = Quaternion.LookRotation(playerRigid.velocity, new Vector3(0, 0, 1));
+            if (playerRigid.velocity.magnitude > 0.3f)
+                ModelTransform.rotation = Quaternion.LookRotation(playerRigid.velocity, new Vector3(0, 0, 1));
 
-            // transform.Translate(velocity * Time.deltaTime);
-            // velocity = velocity * 0.5f;
-            #endregion
+#endregion
 
             #region Shockwave
             //Spieler kann sich mit der fire1 (viereck) taste aufblasen und eine Shockwave instantiaten, die nahe Spieler wegstoeßt
@@ -85,11 +73,11 @@ public class Player : MonoBehaviour {
                 if (fireTimerCounter <= 0)
                 {
                     GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.identity);
-                    if(tag == "player1")
+                    if (tag == "player1")
                     {
                         xyz.GetComponent<Shockwave>().tagSet = "player2";
                     }
-                    else if(tag == "player2")
+                    else if (tag == "player2")
                         xyz.GetComponent<Shockwave>().tagSet = "player1";
                     fireTimerCounter = FIRE_COOLDOWN;
                 }
