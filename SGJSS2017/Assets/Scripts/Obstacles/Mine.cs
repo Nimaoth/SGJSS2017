@@ -29,9 +29,9 @@ public class Mine : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "player1" || other.tag == "player2")
         {
-            Explode(other.transform);
+            Explode(other.transform.parent);
         }
     }
 
@@ -56,7 +56,6 @@ public class Mine : MonoBehaviour {
         Vector3 direction = (player.position - transform.position).normalized;
         Vector3 force = direction * PushStrength;
 
-        Rigidbody rb = player.GetComponent<Rigidbody>();
-        rb.AddForce(force, ForceMode.Impulse);
+        player.GetComponent<Player>().Push(force, 1);
     }
 }

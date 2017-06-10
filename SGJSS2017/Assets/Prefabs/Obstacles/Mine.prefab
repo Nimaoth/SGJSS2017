@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f29c48b0ebf534d94b7b537af866ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushStrength: 3
+  PushStrength: 15
   ExplosionPrefab: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
 --- !u!135 &135049327801456592
 SphereCollider:
