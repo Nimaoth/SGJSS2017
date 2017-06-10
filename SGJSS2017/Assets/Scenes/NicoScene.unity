@@ -342,14 +342,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
-  playerSpeed: 10
+  maxHealth: 3
   lives: 5
+  playerSpeed: 10
   yAxisWrap: 5
   horizontal: Horizontal
   vertical: Vertical
   fire: Fire1
   FIRE_COOLDOWN: 1
-  state: 0
+  PickUpHealthParticleSystem: {fileID: 1926637357502118, guid: 271d5ef565d6efe4d86aa41a5c97fdc8,
+    type: 2}
+  SpeedBuffParticleSystem: {fileID: 1808907526878160, guid: 97038680a715b7d478f96b8d12234a3c,
+    type: 2}
 --- !u!4 &512778978
 Transform:
   m_ObjectHideFlags: 0
@@ -1092,6 +1096,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1759183241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1759183244}
+  - component: {fileID: 1759183243}
+  - component: {fileID: 1759183242}
+  m_Layer: 0
+  m_Name: SpeedBuffPickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1759183242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759183241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f6423e39b7d1042a123002901c5ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 5
+  Strength: 3
+  stat: 1
+--- !u!135 &1759183243
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759183241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1759183244
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759183241}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810326660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,14 +1350,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
-  playerSpeed: 10
+  maxHealth: 3
   lives: 5
+  playerSpeed: 10
   yAxisWrap: 5
   horizontal: Horizontal2
   vertical: Vertical2
   fire: Fire2
   FIRE_COOLDOWN: 1
-  state: 0
+  PickUpHealthParticleSystem: {fileID: 1926637357502118, guid: 271d5ef565d6efe4d86aa41a5c97fdc8,
+    type: 2}
+  SpeedBuffParticleSystem: {fileID: 1808907526878160, guid: 97038680a715b7d478f96b8d12234a3c,
+    type: 2}
 --- !u!4 &1957617341
 Transform:
   m_ObjectHideFlags: 0

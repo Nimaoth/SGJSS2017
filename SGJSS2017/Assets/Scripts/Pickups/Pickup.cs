@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour {
 
-    private Material material;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    public float Duration;
+    public float Strength;
+
+    public enum Stat
+    {
+        Health,
+        Speed
+    }
+
+    public Stat stat;
+
 	// Update is called once per frame
 	void Update () {
         float offset = Game.Instance.Speed * Time.deltaTime;
@@ -28,8 +33,19 @@ public class Pickup : MonoBehaviour {
         }
     }
 
-    Buff()
+    private void Buff(Transform player)
     {
+        Player p = player.GetComponent<Player>();
 
+        switch (stat)
+        {
+            case Stat.Health:
+                p.Heal((int)Strength);
+                break;
+
+            case Stat.Speed:
+                p.SpeedBuff(Duration, Strength);
+                break;
+        }
     }
 }
