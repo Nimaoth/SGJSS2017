@@ -60,8 +60,13 @@ public class Player : MonoBehaviour {
         {
             if (fireTimerCounter <= 0)
             {
-                Instantiate(Shockwave, transform.position, Quaternion.identity);
-           
+                GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.identity);
+                if(tag == "player1")
+                {
+                    xyz.GetComponent<Shockwave>().tagSet = "player2";
+                }
+                else if(tag == "player2")
+                    xyz.GetComponent<Shockwave>().tagSet = "player1";
                 fireTimerCounter = FIRE_COOLDOWN;
             }
         }

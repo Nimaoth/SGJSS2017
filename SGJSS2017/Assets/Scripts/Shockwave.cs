@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shockwave : MonoBehaviour
 {
     public float PushStrength;
-    private string tag;
+    public string tagSet;
 
     // Use this for initialization
     void Start()
@@ -19,18 +19,12 @@ public class Shockwave : MonoBehaviour
         
     }
 
-    void setTag()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == tag)
+        if (other.tag == tagSet)
         {
             Explode(other.transform);
         }
-
         Destroy(gameObject);
     }
 
