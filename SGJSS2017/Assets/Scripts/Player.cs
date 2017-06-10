@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
     public float playerSpeed;
     public int lives = 3;
-    public float yAxisWrap = -10;
+    public float yAxisWrap = 4;
     private Vector3 velocity;
     private Rigidbody playerRigid;
     public string horizontal, vertical, fire;
@@ -58,9 +58,16 @@ public class Player : MonoBehaviour {
 
             //Screen wrap x axis
 
-            if (transform.position.y < yAxisWrap)
+            if (transform.position.y > yAxisWrap)
             {
-                transform.position = new Vector3(transform.position.x, yAxisWrap, transform.position.z);
+                //transform.position = new Vector3(transform.position.x, yAxisWrap, transform.position.z);
+                Push(new Vector3(0, -10, 0));
+            }
+
+            if (transform.position.y < -yAxisWrap)
+            {
+                //transform.position = new Vector3(transform.position.x, -yAxisWrap, transform.position.z);
+                Push(new Vector3(0, 10, 0));
             }
 
             // direction
