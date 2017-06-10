@@ -170,7 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mat: {fileID: 2100000, guid: fdd657763bbe9c2468eb76fbd834cd20, type: 2}
-  Renderer: {fileID: 0}
+  Clip: {fileID: 8300000, guid: ac846028dd2e2b74ea86d86abb4a1410, type: 3}
+  Volume: 1
 --- !u!135 &135370228782777054
 SphereCollider:
   m_ObjectHideFlags: 1

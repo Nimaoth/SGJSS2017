@@ -108,13 +108,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1644495680798092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57f29c48b0ebf534d94b7b537af866ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e281d9f658a107145ab611e7e22f7a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RotationAxis: {x: 0, y: 0, z: 0}
+  RotationSpeed: 0
   PushStrength: 0
-  ExplosionPrefab: {fileID: 0}
-  RotationSpeed: 40
   DestroyOnHit: 0
+  Damage: 0
+  ExplosionPrefab: {fileID: 0}
+  Clip: {fileID: 8300000, guid: a928c7cc81fe3cd4aab5efc96aa89a3c, type: 3}
+  Volume: 10
 --- !u!135 &135256019583409824
 SphereCollider:
   m_ObjectHideFlags: 1

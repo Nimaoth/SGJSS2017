@@ -19,6 +19,8 @@ public class Game : MonoBehaviour {
     public float Speed;
     public float SpeedIncrease;
 
+    public AudioClip[] PlayerHitSounds;
+
     public float AmbientDecrease;
 
 
@@ -73,5 +75,10 @@ public class Game : MonoBehaviour {
         deathCounter++;
         if (deathCounter == nextPlayerID - 1)
             SceneManager.LoadScene("EndScene");
+    }
+
+    public AudioClip getPlayerHitSound(int id)
+    {
+        return PlayerHitSounds[id - 1];
     }
 }

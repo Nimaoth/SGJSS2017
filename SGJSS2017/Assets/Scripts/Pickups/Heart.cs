@@ -5,14 +5,18 @@ using UnityEngine;
 public class Heart : MonoBehaviour {
 
     public Material Mat;
-    public Renderer Renderer;
+    public AudioClip Clip;
+    public float Volume = 1.0f;
+
+    private Renderer rend;
 
     private Material material;
 
     private void Start()
     {
         material = new Material(Mat);
-        Renderer.material = material;
+        rend = GetComponentInChildren<Renderer>();
+        rend.material = material;
     }
 
     // Update is called once per frame
@@ -28,12 +32,17 @@ public class Heart : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "player1" || other.tag == "player2")
+        if (other.tag == "Player")
         {
             StartCoroutine(FadeOut());
 
             Player p = other.transform.parent.GetComponent<Player>();
             p.Heal();
+
+            if (Clip != null)
+            {
+                AudioSource.PlayClipAtPoint(Clip, p.transform.position, Volume);
+            }
         }
     }
 

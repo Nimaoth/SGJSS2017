@@ -338,9 +338,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f6423e39b7d1042a123002901c5ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RotationAxis: {x: 0, y: 0, z: 0}
+  RotationSpeed: 0
   Duration: 3
   Strength: 1.5
-  stat: 1
+  Clip: {fileID: 8300000, guid: a57be98f0884f51498d4ef8019c724f9, type: 3}
+  Volume: 5
 --- !u!135 &135343681735840776
 SphereCollider:
   m_ObjectHideFlags: 1

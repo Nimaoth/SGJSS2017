@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     public float yAxisWrap = 4;
     private Vector3 velocity;
     private Rigidbody playerRigid;
-    public string horizontal, vertical, fire;
 
     private Transform ModelTransform;
 
+    // sound
+    private AudioClip fishSound;
+    
     //for Shot cooldown
     public float FIRE_COOLDOWN;
     private float fireTimerCounter;
@@ -48,6 +50,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < LiveBar.Length; i++)
             LiveBar[i] = scorePlayer.GetChild(i).GetComponent<Lives>();
 
+        fishSound = Game.Instance.getPlayerHitSound(ID);
     }
 
     // Update is called once per frame
@@ -91,15 +94,19 @@ public class Player : MonoBehaviour
 
         #region Shockwave
         //Spieler kann sich mit der fire1 (viereck) taste aufblasen und eine Shockwave instantiaten, die nahe Spieler wegstoeßt
-        if (Input.GetButtonDown(fire))
+        if (Input.GetButtonDown("Fire" + ID))
         {
             if (fireTimerCounter <= 0)
             {
                 GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.LookRotation(dir, Vector3.forward));
                 xyz.GetComponent<Shockwave>().creator = ID;
                 fireTimerCounter = FIRE_COOLDOWN;
+
+
+                AudioSource.PlayClipAtPoint(fishSound, transform.position, 1);
             }
         }
+
 
         if (fireTimerCounter >= 0)
         {

@@ -17,7 +17,7 @@ public class Shockwave : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Player p = other.GetComponent<Player>();
+            Player p = other.transform.parent.GetComponent<Player>();
             if (p.ID != creator)
                 PushPlayer(p);
         }
