@@ -71,7 +71,8 @@ public class Player : MonoBehaviour {
             }
 
             // direction
-            transform.rotation = Quaternion.LookRotation(playerRigid.velocity, new Vector3(0, 0, 1));
+            if (playerRigid.velocity.magnitude > 0.01f)
+                transform.rotation = Quaternion.LookRotation(playerRigid.velocity, new Vector3(0, 0, 1));
 
             // transform.Translate(velocity * Time.deltaTime);
             // velocity = velocity * 0.5f;

@@ -42,7 +42,6 @@ public class Mine : MonoBehaviour {
         // spawn explosion
         if (ExplosionPrefab != null)
         {
-            Debug.Log("explosde");
             Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
         }
 

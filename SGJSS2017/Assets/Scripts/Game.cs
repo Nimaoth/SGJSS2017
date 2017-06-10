@@ -18,6 +18,8 @@ public class Game : MonoBehaviour {
     public float Speed;
     public float SpeedIncrease;
 
+    public float AmbientDecrease;
+
     private void Start()
     {
         s_instance = this;
@@ -28,5 +30,7 @@ public class Game : MonoBehaviour {
         Speed += SpeedIncrease * Time.deltaTime;
         if (Speed > MaxSpeed)
             Speed = MaxSpeed;
+        
+        RenderSettings.ambientLight -= new Color(AmbientDecrease, AmbientDecrease, AmbientDecrease) * Speed * Time.deltaTime;
     }
 }
