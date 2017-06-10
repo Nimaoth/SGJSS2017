@@ -35,7 +35,6 @@ public class Mine : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.tag == "player1" || other.tag == "player2")
         {
             Explode(other.transform.parent);

@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a607979395b3c93449607ad9307969de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shockwave: {fileID: 1807576594780074, guid: 69e5b11be1bb7704aaf4cd5587a3df65, type: 2}
+  Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
   playerSpeed: 10
   lives: 5
   yAxisWrap: 5
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a607979395b3c93449607ad9307969de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shockwave: {fileID: 1807576594780074, guid: 69e5b11be1bb7704aaf4cd5587a3df65, type: 2}
+  Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
   playerSpeed: 10
   lives: 5
   yAxisWrap: 5

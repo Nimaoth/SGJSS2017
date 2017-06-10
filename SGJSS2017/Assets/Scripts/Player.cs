@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
             {
                 if (fireTimerCounter <= 0)
                 {
-                    GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.identity);
+                    GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.LookRotation(dir, Vector3.forward));
                     if (tag == "player1")
                     {
                         xyz.GetComponent<Shockwave>().tagSet = "player2";
