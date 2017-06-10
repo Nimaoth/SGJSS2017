@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4413877141684002}
   - component: {fileID: 95746048706555852}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PufferS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 4077961941447952}
   - component: {fileID: 114700887757058744}
   - component: {fileID: 54883282841217218}
-  m_Layer: 8
-  m_Name: Player 1
-  m_TagString: player1
+  m_Layer: 10
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4138454875546140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4067024279730982}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4805783365037780}
   - component: {fileID: 108291508187322304}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4985688039291172}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Upper_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4686901248145688}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fin_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4291439209067436}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fin_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4456516167388678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4069551327896724}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4829158162758624}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4567288242110646}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lower_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4161536037497068}
   - component: {fileID: 137273932764270524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,9 +220,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4159665388858458}
   - component: {fileID: 136010507607681712}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Model
-  m_TagString: player1
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
+  ID: 0
   maxHealth: 3
   lives: 3
   playerSpeed: 10
@@ -510,6 +511,10 @@ MonoBehaviour:
   vertical: Vertical
   fire: Fire1
   FIRE_COOLDOWN: 1
+  LiveBar:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   PickUpHealthParticleSystem: {fileID: 1926637357502118, guid: 271d5ef565d6efe4d86aa41a5c97fdc8,
     type: 2}
   SpeedBuffParticleSystem: {fileID: 1808907526878160, guid: 97038680a715b7d478f96b8d12234a3c,

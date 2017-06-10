@@ -2,25 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mine : MonoBehaviour {
-
-    
+public class Pusher : MovableObject
+{
+    public float PushStrength;
+    public bool DestroyOnHit;
+    public bool Damage;
     public GameObject ExplosionPrefab;
-    public float RotationSpeed;
-   
-     
-     
-
-    // Use this for initialization
-    void Start()
-    {
-	    
-	}
-	
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "player1" || other.tag == "player2")
+        if (other.tag == "Player")
         {
             Explode(other.transform.parent);
         }
@@ -49,4 +40,5 @@ public class Mine : MonoBehaviour {
 
         player.GetComponent<Player>().Push(force, Damage);
     }
+
 }

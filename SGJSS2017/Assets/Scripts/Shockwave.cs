@@ -5,40 +5,30 @@ using UnityEngine;
 public class Shockwave : MonoBehaviour
 {
     public float PushStrength;
-    public string tagSet;
+    public int creator;
 
     // Use this for initialization
     void Start()
     {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Destroy(gameObject, 0.1f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == tagSet)
+        if (other.tag == "Player")
         {
-            Explode(other.transform.parent);
+            Player p = other.GetComponent<Player>();
+            if (p.ID != creator)
+                PushPlayer(p);
         }
-        Destroy(gameObject);
     }
 
-    private void Explode(Transform player)
-    {
-        PushPlayer(player);
-    }
-
-    private void PushPlayer(Transform player)
+    private void PushPlayer(Player player)
     {
         // direction from mine to player
-        Vector3 direction = (player.position - transform.position).normalized;
+        Vector3 direction = (player.transform.position - transform.position).normalized;
         Vector3 force = direction * PushStrength;
 
-        player.GetComponent<Player>().Push(force);
+        player.Push(force);
     }
 }

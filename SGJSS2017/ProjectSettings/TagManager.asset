@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shockwave
-  - player1
-  - player2
   - Fire
+  - PlayerUI
+  - right
   layers:
   - Default
   - TransparentFX
@@ -19,7 +19,7 @@ TagManager:
   - 
   - Player1
   - Player2
-  - 
+  - Player
   - 
   - 
   - 
