@@ -20,7 +20,7 @@ public class Pusher : MovableObject
             Explode(player);
 
             Player pusher = player.getLastPusher(); 
-            if (!pusher)
+            if (pusher != null)
             {
                 pusher.score.addScore(tag);
             }
@@ -54,6 +54,7 @@ public class Pusher : MovableObject
         Vector3 force = direction * PushStrength;
 
         player.Push(force, Damage);
+        player.score.resetMultiplier();
 
         Camera.main.GetComponent<ScreenShaker>().Shake(ScreenShake, 0.5f);
     }

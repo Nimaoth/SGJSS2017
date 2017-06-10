@@ -13,8 +13,10 @@ public class Score : MonoBehaviour {
      */
 
     public Text sc;
+    public Text multiplierText;
     private float currentScore;
     private float multiplier = 1.0f;
+    private float lastReset;
 
 	// Use this for initialization
 	void Start()
@@ -29,13 +31,24 @@ public class Score : MonoBehaviour {
 	void Update()
     {
         if (tag == "right")
-            sc.text = (int)currentScore + " :Score";
+            sc.text = (int)currentScore + " :Score\nx" + multiplier;
         else
             sc.text = "Score: " + (int)currentScore;
 
+        multiplierText.text = "x " + multiplier.ToString("0.00");
+
         currentScore += multiplier * 10 * Time.deltaTime;
 
+        if (Time.time - lastReset > 5)
+        {
+            multiplier += 0.1f * Time.deltaTime;
+        }
+    }
 
+    public void resetMultiplier()
+    {
+        multiplier = 1;
+        lastReset = Time.time;
     }
 
     public void addScore(string tag)
