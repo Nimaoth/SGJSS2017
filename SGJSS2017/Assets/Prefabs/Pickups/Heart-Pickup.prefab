@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 135370228782777054}
   - component: {fileID: 114372675187672612}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart-Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
