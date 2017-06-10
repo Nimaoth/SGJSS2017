@@ -61,8 +61,9 @@ public class Player : MonoBehaviour
                 Push(new Vector3(0, 0.5f * playerRigid.velocity.magnitude, 0));
 
             // direction
-            if (playerRigid.velocity.magnitude > 0.3f)
-                ModelTransform.rotation = Quaternion.LookRotation(playerRigid.velocity, new Vector3(0, 0, 1));
+            Vector3 dir = new Vector3(0, -Game.Instance.Speed, 0) * 1 + playerRigid.velocity;
+            if (dir.magnitude > 0.3f)
+                ModelTransform.rotation = Quaternion.LookRotation(dir, new Vector3(0, 0, 1));
 
 #endregion
 
