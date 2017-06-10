@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114121627322589674}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   ExplosionPrefab: {fileID: 0}
   Clip: {fileID: 8300000, guid: a928c7cc81fe3cd4aab5efc96aa89a3c, type: 3}
   Volume: 10
+  ScreenShake: 0
 --- !u!135 &135256019583409824
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -12,7 +12,6 @@ public class bubble : MonoBehaviour {
     private float maxSpeed = 15;
     private float maxForce = 25;
     private float mouseForce = 15;
-    private float counter = 5;
 
     public GameObject bubbleExplosion;
     public Renderer r;

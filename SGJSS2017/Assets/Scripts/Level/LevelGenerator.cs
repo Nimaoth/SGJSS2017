@@ -46,7 +46,7 @@ public class LevelGenerator : MonoBehaviour {
         GameObject prefab = Obstacles[index];
         Vector3 pos = ObstaclesParent.transform.position;
         pos.x += Random.Range(-LevelWidth, LevelWidth);
-        GameObject instance = Instantiate(prefab, pos, Quaternion.identity, ObstaclesParent);
+        Instantiate(prefab, pos, Quaternion.identity, ObstaclesParent);
 
     }
 

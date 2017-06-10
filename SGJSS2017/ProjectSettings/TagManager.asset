@@ -8,6 +8,12 @@ TagManager:
   - Fire
   - PlayerUI
   - right
+  - SpeedUp
+  - SlowDown
+  - Mine
+  - Seastar
+  - Rock
+  - Wall
   layers:
   - Default
   - TransparentFX
