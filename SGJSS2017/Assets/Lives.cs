@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Lives : MonoBehaviour {
 
-    private bool boom;
-
     public Material Mat;
     private Material material;
 
@@ -18,7 +16,6 @@ public class Lives : MonoBehaviour {
 
     public void destroy()
     {
-        boom = true;
         StartCoroutine(blink(false));
     }
 

@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114253127980206280}
   m_Layer: 0
   m_Name: Mine
-  m_TagString: Untagged
+  m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   ExplosionPrefab: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
   Clip: {fileID: 8300000, guid: 6b988090ee4dc414fb978aaaff00df8e, type: 3}
   Volume: 10
+  ScreenShake: 0.25
 --- !u!135 &135049327801456592
 SphereCollider:
   m_ObjectHideFlags: 1

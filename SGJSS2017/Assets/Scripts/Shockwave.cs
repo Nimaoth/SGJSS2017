@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shockwave : MonoBehaviour
 {
     public float PushStrength;
-    public int creator;
+    public Player creator;
 
     // Use this for initialization
     void Start()
@@ -18,7 +18,7 @@ public class Shockwave : MonoBehaviour
         if (other.tag == "Player")
         {
             Player p = other.transform.parent.GetComponent<Player>();
-            if (p.ID != creator)
+            if (p.ID != creator.ID)
                 PushPlayer(p);
         }
     }
@@ -29,6 +29,6 @@ public class Shockwave : MonoBehaviour
         Vector3 direction = (player.transform.position - transform.position).normalized;
         Vector3 force = direction * PushStrength;
 
-        player.Push(force);
+        player.Push(force, false, creator);
     }
 }

@@ -11,7 +11,9 @@ public class Player : MonoBehaviour
     public int lives = 3;
     public float playerSpeed;
     public float yAxisWrap = 4;
-    private Vector3 velocity;
+
+    public Score score;
+
     private Rigidbody playerRigid;
 
     private Transform ModelTransform;
@@ -36,6 +38,10 @@ public class Player : MonoBehaviour
     private float speedBuffEndTime = 0.0f;
     private GameObject speedBuffPS;
 
+    // last pusher
+    private Player lastPusher;
+    private float lastPushTime;
+
     // Use this for initialization
     void Start()
     {
@@ -49,6 +55,8 @@ public class Player : MonoBehaviour
         LiveBar = new Lives[scorePlayer.childCount - 1];
         for (int i = 0; i < LiveBar.Length; i++)
             LiveBar[i] = scorePlayer.GetChild(i).GetComponent<Lives>();
+
+        score = scorePlayer.GetComponentInChildren<Score>();
 
         fishSound = Game.Instance.getPlayerHitSound(ID);
     }
@@ -79,11 +87,10 @@ public class Player : MonoBehaviour
 
         // dont move outside of screen
         if (transform.position.y > yAxisWrap)
-            Push(new Vector3(0, -0.5f * playerRigid.velocity.magnitude, 0));
-        //playerRigid.velocity = new Vector3(playerRigid.velocity.x, -playerRigid.velocity.y, playerRigid.velocity.z);
+            playerRigid.AddForce(new Vector3(0, -0.5f * playerRigid.velocity.magnitude, 0), ForceMode.Impulse);
 
         if (transform.position.y < -yAxisWrap)
-            Push(new Vector3(0, 0.5f * playerRigid.velocity.magnitude, 0));
+            playerRigid.AddForce(new Vector3(0, 0.5f * playerRigid.velocity.magnitude, 0), ForceMode.Impulse);
 
         // direction
         Vector3 dir = new Vector3(0, -Game.Instance.Speed, 0) * 1 + playerRigid.velocity;
@@ -99,7 +106,7 @@ public class Player : MonoBehaviour
             if (fireTimerCounter <= 0)
             {
                 GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.LookRotation(dir, Vector3.forward));
-                xyz.GetComponent<Shockwave>().creator = ID;
+                xyz.GetComponent<Shockwave>().creator = this;
                 fireTimerCounter = FIRE_COOLDOWN;
 
 
@@ -116,11 +123,22 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    public void Push(Vector3 force, bool damage = false)
+    public void Push(Vector3 force, bool damage = false, Player player = null)
     {
+        lastPusher = player;
+        lastPushTime = Time.time;
         playerRigid.AddForce(force, ForceMode.Impulse);
         if (damage)
             TakeDamage();
+    }
+
+    public Player getLastPusher()
+    {
+        if (Time.time - lastPushTime <= 1)
+        {
+            return lastPusher;
+        }
+        return null;
     }
 
     public void TakeDamage()
@@ -131,6 +149,9 @@ public class Player : MonoBehaviour
         }
 
         lives--;
+
+
+
         if (lives <= 0)
         {
             lives = 0;
@@ -138,6 +159,8 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
 
             Game.Instance.playerDied();
+
+            score.addScore("Death");
         }
     }
 

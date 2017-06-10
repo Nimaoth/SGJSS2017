@@ -23,10 +23,11 @@ GameObject:
   - component: {fileID: 23749999092570750}
   - component: {fileID: 95096287182360554}
   - component: {fileID: 135256019583409824}
+  - component: {fileID: 135641495086859208}
   - component: {fileID: 114121627322589674}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,12 +114,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationAxis: {x: 0, y: 0, z: 0}
   RotationSpeed: 0
-  PushStrength: 0
+  PushStrength: 1
   DestroyOnHit: 0
   Damage: 0
   ExplosionPrefab: {fileID: 0}
   Clip: {fileID: 8300000, guid: a928c7cc81fe3cd4aab5efc96aa89a3c, type: 3}
   Volume: 10
+  ScreenShake: 0
 --- !u!135 &135256019583409824
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -129,5 +131,17 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.18
+  m_Radius: 1.41
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135641495086859208
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644495680798092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.74
   m_Center: {x: 0, y: 0, z: 0}
