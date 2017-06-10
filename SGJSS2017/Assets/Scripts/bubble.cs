@@ -24,6 +24,9 @@ public class bubble : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        //Set level
+        RenderSettings.ambientLight = new Color(1, 1, 1);
+
         //give every bubble a random size
         float random = Random.Range(0.2f, 0.3f);
         transform.localScale = new Vector3(random, random, random);
