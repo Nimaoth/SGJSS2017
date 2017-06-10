@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 135607301947787216}
   m_Layer: 0
   m_Name: StarFish
-  m_TagString: Untagged
+  m_TagString: Seastar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,7 +231,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b93c9838191d91d4d87f5969cb0b4135, type: 2}
+  - {fileID: 2100000, guid: d5458033f0bd73741a662ead3b89cfbb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -282,14 +282,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1158736875125172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57f29c48b0ebf534d94b7b537af866ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e281d9f658a107145ab611e7e22f7a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushStrength: 15
-  ExplosionPrefab: {fileID: 0}
+  RotationAxis: {x: 0, y: 0, z: 0}
   RotationSpeed: 0
+  PushStrength: 15
   DestroyOnHit: 0
   Damage: 0
+  ExplosionPrefab: {fileID: 0}
+  Clip: {fileID: 8300000, guid: 584f40a6f5e6d8e4f8c171c4641bc548, type: 3}
+  Volume: 1
+  ScreenShake: 0
 --- !u!135 &135607301947787216
 SphereCollider:
   m_ObjectHideFlags: 1

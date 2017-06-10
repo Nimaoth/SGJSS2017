@@ -12,7 +12,6 @@ public class bubble : MonoBehaviour {
     private float maxSpeed = 15;
     private float maxForce = 25;
     private float mouseForce = 15;
-    private float counter = 5;
 
     public GameObject bubbleExplosion;
     public Renderer r;
@@ -23,6 +22,9 @@ public class bubble : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        //Set level
+        RenderSettings.ambientLight = new Color(1, 1, 1);
 
         //give every bubble a random size
         float random = Random.Range(0.2f, 0.3f);
