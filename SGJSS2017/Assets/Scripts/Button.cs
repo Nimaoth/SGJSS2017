@@ -63,4 +63,9 @@ public class Button : MonoBehaviour {
         Debug.Log("test");
         Application.Quit();
     }
+
+    public void menu()
+    {
+        SceneManager.LoadScene("ViolaScene");
+    }
 }
