@@ -41,7 +41,7 @@ public class Pickup : MonoBehaviour {
         switch (stat)
         {
             case Stat.Health:
-                p.Heal((int)Strength);
+                p.Heal();
                 break;
 
             case Stat.Speed:

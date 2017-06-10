@@ -1,43 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Lives : MonoBehaviour {
 
     private bool boom;
 
+    public Material Mat;
+    private Material material;
+
 	// Use this for initialization
 	void Start () {
-        boom = true;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        material = new Material(Mat);
+        GetComponent<Image>().material = material;
 	}
 
     public void destroy()
     {
         boom = true;
-        StartCoroutine(blink());
+        StartCoroutine(blink(false));
     }
 
-    public void add (float count)
+    public void show(bool b)
     {
-        StartCoroutine(blink());
+        StartCoroutine(blink(b));
     }
 
-    IEnumerator blink ()
+    private IEnumerator blink(bool show)
     {
-        yield return new WaitForSeconds(1.0f);
+        float blinkSpeed = 10f;
 
-        //set oppacity lower
-        Color c = this.GetComponent<Renderer>().material.color;
+        float f = 0;
+        float target = 3 * Mathf.PI;
+        float off = show ? Mathf.PI : 0;
 
-        if (boom && c.a >= 0f)
-            c.a -= 0.1f;
+        Color c = material.color;
+        while (f < target)
+        {
+            c.a = 0.5f * Mathf.Cos(f + off) + 0.5f;
+            material.color = c;
+            f += Time.deltaTime * blinkSpeed;
 
-        if (!boom && c.a <= 1.0f)
-            c.a += 0.1f;
+            yield return null;
+        }
+
+        c.a = show ? 1.0f : 0.0f;
+        material.color = c;
+        yield return null;
     }
 }

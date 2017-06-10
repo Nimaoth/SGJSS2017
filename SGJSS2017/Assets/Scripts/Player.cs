@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     public float FIRE_COOLDOWN;
     private float fireTimerCounter;
 
+    // ui
+    public Lives[] LiveBar;
+
     // ParticleSystem for buffs
     public GameObject PickUpHealthParticleSystem;
     public GameObject SpeedBuffParticleSystem;
@@ -109,15 +112,37 @@ public class Player : MonoBehaviour
             SpeedBuff(3, 2);
     }
 
-    public void Push(Vector3 force, int damage = 0)
+    public void Push(Vector3 force, bool damage = false)
     {
         playerRigid.AddForce(force, ForceMode.Impulse);
-        lives -= damage;
+        if (damage)
+            TakeDamage();
     }
 
-    public void Heal(int amount)
+    public void TakeDamage()
     {
-        lives += amount;
+        if (lives > 0)
+        {
+            LiveBar[lives - 1].show(false);
+        }
+
+        lives--;
+        if (lives <= 0)
+        {
+            lives = 0;
+            // TODO game over
+            Game.Instance.LoadScene("EndScene", 2);
+        }
+    }
+
+    public void Heal()
+    {
+        if (lives <= 2)
+        {
+            LiveBar[lives].show(true);
+        }
+
+        lives++;
         if (lives > maxHealth)
             lives = maxHealth;
     }

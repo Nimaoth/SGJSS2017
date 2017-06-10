@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour {
 
@@ -43,5 +44,16 @@ public class Game : MonoBehaviour {
             amb.b = 1.1f * min;
 
         RenderSettings.ambientLight = amb;
+    }
+
+    public void LoadScene(string scene, float time = 0.0f)
+    {
+        StartCoroutine(LoadSceneCo(scene, time));
+    }
+
+    public IEnumerator LoadSceneCo(string scene, float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(scene);
     }
 }

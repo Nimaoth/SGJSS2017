@@ -8,11 +8,8 @@ public class Mine : MonoBehaviour {
     public GameObject ExplosionPrefab;
     public float RotationSpeed;
     public bool DestroyOnHit;
-    public int Damage;
-
-    private Material material;
-    
-
+    public bool Damage;
+     
 
     // Use this for initialization
     void Start()

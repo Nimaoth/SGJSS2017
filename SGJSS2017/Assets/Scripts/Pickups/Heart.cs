@@ -33,7 +33,7 @@ public class Heart : MonoBehaviour {
             StartCoroutine(FadeOut());
 
             Player p = other.transform.parent.GetComponent<Player>();
-            p.Heal(1);
+            p.Heal();
         }
     }
 
