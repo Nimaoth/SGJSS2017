@@ -8,7 +8,9 @@ public class LevelGenerator : MonoBehaviour {
 
     public Transform ObstaclesParent;
 
-    public float Frequency;
+    public float MaxSpawnRate;
+    public float SpawnRate;
+    public float SpawnRageChange;
     public float LevelWidth;
 
     private float lastSpawn = 0;
@@ -22,14 +24,17 @@ public class LevelGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
     {
-		if (Time.time - lastSpawn > Frequency)
+		if (Random.value < 0.01 * SpawnRate * (Time.time - lastSpawn))
         {
             lastSpawn = Time.time;
 
             // spawn obstacles here
             SpawnObstacle();
         }
-        
+
+        SpawnRate += SpawnRageChange * Time.deltaTime;
+        if (SpawnRate > MaxSpawnRate)
+            SpawnRate = MaxSpawnRate;
 	}
 
     private void SpawnObstacle()

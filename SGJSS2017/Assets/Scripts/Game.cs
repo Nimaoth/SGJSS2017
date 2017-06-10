@@ -14,6 +14,7 @@ public class Game : MonoBehaviour {
         }
     }
 
+    public float MaxSpeed;
     public float Speed;
     public float SpeedIncrease;
 
@@ -25,5 +26,7 @@ public class Game : MonoBehaviour {
     private void Update()
     {
         Speed += SpeedIncrease * Time.deltaTime;
+        if (Speed > MaxSpeed)
+            Speed = MaxSpeed;
     }
 }

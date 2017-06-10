@@ -240,7 +240,9 @@ MonoBehaviour:
   Obstacles:
   - {fileID: 1700529167494900, guid: f049a22e445e67745bd7a5f99013f14d, type: 2}
   ObstaclesParent: {fileID: 569690984}
-  Frequency: 1
+  MaxSpawnRate: 2
+  SpawnRate: 0
+  SpawnRageChange: 0.02
   LevelWidth: 7.03
 --- !u!1 &540805194
 GameObject:
@@ -490,6 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93c31dee29df294db7649975a621524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxSpeed: 3
   Speed: 1
   SpeedIncrease: 0.1
 --- !u!1 &2133122470
