@@ -6,8 +6,12 @@ public class Mine : MonoBehaviour {
 
     public float PushStrength;
     public GameObject ExplosionPrefab;
+    public float RotationSpeed;
+    public bool DestroyOnHit;
+    public int Damage;
 
     private Material material;
+    
 
 
     // Use this for initialization
@@ -25,6 +29,8 @@ public class Mine : MonoBehaviour {
         // destroy if out of screen
         if (transform.position.y > 50)
             Destroy(gameObject);
+
+        transform.Rotate(Vector3.up, RotationSpeed * Time.deltaTime);
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -46,7 +52,8 @@ public class Mine : MonoBehaviour {
         }
 
         // destroy this game object
-        Destroy(gameObject);
+        if (DestroyOnHit)
+            Destroy(gameObject);
     }
 
     private void PushPlayer(Transform player)
@@ -55,6 +62,6 @@ public class Mine : MonoBehaviour {
         Vector3 direction = (player.position - transform.position).normalized;
         Vector3 force = direction * PushStrength;
 
-        player.GetComponent<Player>().Push(force, 1);
+        player.GetComponent<Player>().Push(force, Damage);
     }
 }

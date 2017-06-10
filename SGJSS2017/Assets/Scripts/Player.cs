@@ -61,8 +61,9 @@ public class Player : MonoBehaviour
                 Push(new Vector3(0, 0.5f * playerRigid.velocity.magnitude, 0));
 
             // direction
-            if (playerRigid.velocity.magnitude > 0.3f)
-                ModelTransform.rotation = Quaternion.LookRotation(playerRigid.velocity, new Vector3(0, 0, 1));
+            Vector3 dir = new Vector3(0, -Game.Instance.Speed, 0) * 1 + playerRigid.velocity;
+            if (dir.magnitude > 0.3f)
+                ModelTransform.rotation = Quaternion.LookRotation(dir, new Vector3(0, 0, 1));
 
 #endregion
 
@@ -72,7 +73,7 @@ public class Player : MonoBehaviour
             {
                 if (fireTimerCounter <= 0)
                 {
-                    GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.identity);
+                    GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.LookRotation(dir, Vector3.forward));
                     if (tag == "player1")
                     {
                         xyz.GetComponent<Shockwave>().tagSet = "player2";
