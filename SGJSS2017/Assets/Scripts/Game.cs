@@ -30,7 +30,18 @@ public class Game : MonoBehaviour {
         Speed += SpeedIncrease * Time.deltaTime;
         if (Speed > MaxSpeed)
             Speed = MaxSpeed;
-        
-        RenderSettings.ambientLight -= new Color(AmbientDecrease, AmbientDecrease, AmbientDecrease) * Speed * Time.deltaTime;
+
+
+        Color amb = RenderSettings.ambientLight - new Color(AmbientDecrease, AmbientDecrease, AmbientDecrease) * Speed * Time.deltaTime;
+
+        float min = 0.2f;
+        if (amb.r < min)
+            amb.r = min;
+        if (amb.g < min)
+            amb.g = min;
+        if (amb.b < 1.1f * min)
+            amb.b = 1.1f * min;
+
+        RenderSettings.ambientLight = amb;
     }
 }

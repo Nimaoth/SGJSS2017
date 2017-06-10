@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,9 +31,6 @@ public class Shockwave : MonoBehaviour
     private void Explode(Transform player)
     {
         PushPlayer(player);
-
-        // destroy this game object
-        Destroy(gameObject);
     }
 
     private void PushPlayer(Transform player)
