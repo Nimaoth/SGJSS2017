@@ -23,8 +23,12 @@ public class Player : MonoBehaviour
     // ParticleSystem for buffs
     public GameObject PickUpHealthParticleSystem;
     public GameObject SpeedBuffParticleSystem;
+    public GameObject SpeedDebuffParticleSystem;
 
     private bool hasSpeedBuff = false;
+    private float speedBuff = 1.0f;
+    private float speedBuffEndTime = 0.0f;
+    private GameObject speedBuffPS;
 
     // Use this for initialization
     void Start()
@@ -36,11 +40,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float speed = playerSpeed;
+        if (hasSpeedBuff)
+        {
+            if (Time.time >= speedBuffEndTime)
+            {
+                // cancel
+                StopSpeedBuff();
+            }
+            else
+            {
+                speed *= speedBuff;
+            }
+        }
+
         #region Player Movement
         //player Movement
         Vector3 force = new Vector3();
-        force.x = Input.GetAxis(horizontal) * playerSpeed * Time.deltaTime;
-        force.y = Input.GetAxis(vertical) * playerSpeed * Time.deltaTime;
+        force.x = Input.GetAxis(horizontal) * speed * Time.deltaTime;
+        force.y = Input.GetAxis(vertical) * speed * Time.deltaTime;
         playerRigid.AddForce(force * 150, ForceMode.Acceleration);
 
         // dont move outside of screen
@@ -104,10 +122,44 @@ public class Player : MonoBehaviour
             lives = maxHealth;
     }
 
-    public void SpeedBuff(float time, float amount)
+    public void SpeedBuff(float duration, float amount)
     {
         if (!hasSpeedBuff)
-            StartCoroutine(SpeedBuffCoroutine(time, amount));
+        {
+            hasSpeedBuff = true;
+
+            if (amount > 1)
+            {
+                speedBuffPS = Instantiate(SpeedBuffParticleSystem, transform.position, Quaternion.identity, transform);
+            }
+            else
+            {
+                speedBuffPS = Instantiate(SpeedDebuffParticleSystem, transform.position, Quaternion.identity, transform);
+            }
+
+            speedBuffEndTime = Time.time + duration;
+        }
+        else
+        {
+            if ((amount >= 1 && speedBuff >= 1) || (amount < 1 && speedBuff < 1))
+            {
+                // same buff, so refresh timer
+                speedBuffEndTime = Time.time + duration;
+            }
+            else
+            {
+                // cancel
+                StopSpeedBuff();
+            }
+        }
+        speedBuff = amount;
+    }
+
+    public void StopSpeedBuff()
+    {
+        speedBuffPS.GetComponent<ParticleSystem>().Stop();
+        Destroy(speedBuffPS, 2);
+        hasSpeedBuff = false;
     }
 
     private IEnumerator SpeedBuffCoroutine(float time, float amount)
@@ -115,7 +167,15 @@ public class Player : MonoBehaviour
         hasSpeedBuff = true;
 
         playerSpeed *= amount;
-        GameObject ps = Instantiate(SpeedBuffParticleSystem, transform.position, Quaternion.identity, transform);
+        GameObject ps;
+        if (amount > 1)
+        {
+            ps = Instantiate(SpeedBuffParticleSystem, transform.position, Quaternion.identity, transform);
+        }
+        else
+        {
+            ps = Instantiate(SpeedDebuffParticleSystem, transform.position, Quaternion.identity, transform);
+        }
 
         yield return new WaitForSeconds(time);
 

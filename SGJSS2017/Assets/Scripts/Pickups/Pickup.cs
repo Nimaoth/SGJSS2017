@@ -30,6 +30,7 @@ public class Pickup : MonoBehaviour {
         if (other.tag == "player1" || other.tag == "player2")
         {
             Buff(other.transform.parent);
+            Destroy(gameObject);
         }
     }
 
