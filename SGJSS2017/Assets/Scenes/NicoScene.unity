@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
   maxHealth: 3
-  lives: 5
+  lives: 3
   playerSpeed: 10
   yAxisWrap: 5
   horizontal: Horizontal
@@ -507,9 +507,10 @@ MonoBehaviour:
   - {fileID: 1644495680798092, guid: 392742d205f588d4d9259537b01aaa52, type: 2}
   - {fileID: 1350496949604414, guid: 70c5f67f78962de4ca29b0a28f05f241, type: 2}
   - {fileID: 1953917126061724, guid: 7d29025088064a648b49b5ee02a13469, type: 2}
+  - {fileID: 1191356444232554, guid: 9ee80439323cf7e42ba4aee9f1f8ac54, type: 2}
   ObstaclesParent: {fileID: 1147310719}
   MaxSpawnRate: 100
-  SpawnRate: 20
+  SpawnRate: 5
   SpawnRageChange: 1
   LevelWidth: 5
 --- !u!1001 &668927299
@@ -1085,7 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 10
   Speed: 1
-  SpeedIncrease: 0
+  SpeedIncrease: 0.1
   AmbientDecrease: 0.0075
 --- !u!4 &1755472503
 Transform:
@@ -1299,7 +1300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
   maxHealth: 3
-  lives: 5
+  lives: 3
   playerSpeed: 10
   yAxisWrap: 5
   horizontal: Horizontal2
