@@ -13,7 +13,7 @@ public class Border : MonoBehaviour {
         float move = Game.Instance.Speed * Time.deltaTime;
         transform.Translate(0, move, 0);
 
-        if (!created && transform.position.y > -2)
+        if (!created && transform.position.y > -6)
         {
             Create();
             created = true;

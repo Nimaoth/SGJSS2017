@@ -24,7 +24,7 @@ public class LevelGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
     {
-		if (Random.value < 0.01 * SpawnRate * (Time.time - lastSpawn))
+		if (Random.value < 0.001 * SpawnRate * (Time.time - lastSpawn))
         {
             lastSpawn = Time.time;
 
