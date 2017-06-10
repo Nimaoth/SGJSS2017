@@ -55,7 +55,7 @@ public class Button : MonoBehaviour {
 
     public void load()
     {
-        SceneManager.LoadScene("NicoScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void quit()
