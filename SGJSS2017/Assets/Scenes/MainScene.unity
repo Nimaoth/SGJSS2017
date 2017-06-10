@@ -407,6 +407,8 @@ MonoBehaviour:
   - {fileID: 1350496949604414, guid: 70c5f67f78962de4ca29b0a28f05f241, type: 2}
   - {fileID: 1953917126061724, guid: 7d29025088064a648b49b5ee02a13469, type: 2}
   - {fileID: 1191356444232554, guid: 9ee80439323cf7e42ba4aee9f1f8ac54, type: 2}
+  - {fileID: 1191356444232554, guid: 9ee80439323cf7e42ba4aee9f1f8ac54, type: 2}
+  - {fileID: 1191356444232554, guid: 9ee80439323cf7e42ba4aee9f1f8ac54, type: 2}
   ObstaclesParent: {fileID: 2108464498}
   MaxSpawnRate: 100
   SpawnRate: 5

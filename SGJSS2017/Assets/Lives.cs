@@ -29,10 +29,10 @@ public class Lives : MonoBehaviour {
 
     private IEnumerator blink(bool show)
     {
-        float blinkSpeed = 10f;
+        float blinkSpeed = 15f;
 
         float f = 0;
-        float target = 3 * Mathf.PI;
+        float target = 5 * Mathf.PI;
         float off = show ? Mathf.PI : 0;
 
         Color c = material.color;
