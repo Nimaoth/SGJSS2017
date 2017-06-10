@@ -641,9 +641,9 @@ MonoBehaviour:
   Obstacles:
   - {fileID: 1746583978811772, guid: f049a22e445e67745bd7a5f99013f14d, type: 2}
   ObstaclesParent: {fileID: 1375739616}
-  MaxSpawnRate: 20
+  MaxSpawnRate: 100
   SpawnRate: 2
-  SpawnRageChange: 0.04
+  SpawnRageChange: 1
   LevelWidth: 5
 --- !u!4 &786800614
 Transform:
