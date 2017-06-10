@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public GameObject Shockwave;
 
+    public int ID; 
     public int maxHealth = 3;
     public int lives = 3;
     public float playerSpeed;
@@ -36,8 +37,17 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        ID = Game.Instance.getPlayerID();
         playerRigid = GetComponent<Rigidbody>();
         ModelTransform = transform.Find("Model");
+
+        GameObject UI = GameObject.FindWithTag("PlayerUI");
+        Transform scorePlayer = UI.transform.GetChild(ID - 1);
+
+        LiveBar = new Lives[scorePlayer.childCount - 1];
+        for (int i = 0; i < LiveBar.Length; i++)
+            LiveBar[i] = scorePlayer.GetChild(i).GetComponent<Lives>();
+
     }
 
     // Update is called once per frame
@@ -60,8 +70,8 @@ public class Player : MonoBehaviour
         #region Player Movement
         //player Movement
         Vector3 force = new Vector3();
-        force.x = Input.GetAxis(horizontal) * speed * Time.deltaTime;
-        force.y = Input.GetAxis(vertical) * speed * Time.deltaTime;
+        force.x = Input.GetAxis("Horizontal" + ID) * speed * Time.deltaTime;
+        force.y = Input.GetAxis("Vertical" + ID) * speed * Time.deltaTime;
         playerRigid.AddForce(force * 150, ForceMode.Acceleration);
 
         // dont move outside of screen
@@ -86,12 +96,7 @@ public class Player : MonoBehaviour
             if (fireTimerCounter <= 0)
             {
                 GameObject xyz = Instantiate(Shockwave, transform.position, Quaternion.LookRotation(dir, Vector3.forward));
-                if (tag == "player1")
-                {
-                    xyz.GetComponent<Shockwave>().tagSet = "player2";
-                }
-                else if (tag == "player2")
-                    xyz.GetComponent<Shockwave>().tagSet = "player1";
+                xyz.GetComponent<Shockwave>().creator = ID;
                 fireTimerCounter = FIRE_COOLDOWN;
             }
         }
@@ -102,14 +107,6 @@ public class Player : MonoBehaviour
         }
 
         #endregion
-
-        if (lives <= 0)
-        {
-            Destroy(gameObject);
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-            SpeedBuff(3, 2);
     }
 
     public void Push(Vector3 force, bool damage = false)
@@ -131,7 +128,9 @@ public class Player : MonoBehaviour
         {
             lives = 0;
             // TODO game over
-            Game.Instance.LoadScene("EndScene", 2);
+            Destroy(gameObject);
+
+            Game.Instance.playerDied();
         }
     }
 

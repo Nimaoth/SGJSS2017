@@ -21,10 +21,16 @@ public class Game : MonoBehaviour {
 
     public float AmbientDecrease;
 
-    private void Start()
+
+    private int nextPlayerID;
+    private float deathCounter;
+
+    private void Awake()
     {
         s_instance = this;
+        nextPlayerID = 1;
     }
+
 
     private void Update()
     {
@@ -55,5 +61,17 @@ public class Game : MonoBehaviour {
     {
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene(scene);
+    }
+
+    public int getPlayerID()
+    {
+        return nextPlayerID++;
+    }
+
+    public void playerDied()
+    {
+        deathCounter++;
+        if (deathCounter == nextPlayerID - 1)
+            SceneManager.LoadScene("EndScene");
     }
 }
