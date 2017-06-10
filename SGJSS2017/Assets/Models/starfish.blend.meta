@@ -4,7 +4,22 @@ timeCreated: 1497062872
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Empty
+    100006: Plane
+    100008: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Empty
+    400006: Plane
+    400008: //RootNode
+    2300000: Plane
+    3300000: Plane
+    4300000: Plane
+    7400000: Default Take
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
