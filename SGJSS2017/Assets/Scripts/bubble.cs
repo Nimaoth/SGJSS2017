@@ -64,8 +64,9 @@ public class bubble : MonoBehaviour {
         }
 
         acc += steering;
-         Vector3 mousePos = mousePosi.mousePos;
-         mousePos.z = transform.position.z;
+        
+        Vector3 mousePos = mousePosi.mousePos;
+        mousePos.z = transform.position.z;
 
          Vector3 dir = transform.position - mousePos;
          float dist = dir.sqrMagnitude;

@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4077961941447952}
   - component: {fileID: 114700887757058744}
   - component: {fileID: 54883282841217218}
+  - component: {fileID: 114531974344670618}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -490,6 +491,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114531974344670618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074102969906898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6695a56ed374a524ba8294d79fb72b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114700887757058744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -507,9 +519,7 @@ MonoBehaviour:
   lives: 3
   playerSpeed: 10
   yAxisWrap: 5
-  horizontal: Horizontal
-  vertical: Vertical
-  fire: Fire1
+  score: {fileID: 0}
   FIRE_COOLDOWN: 1
   LiveBar:
   - {fileID: 0}
