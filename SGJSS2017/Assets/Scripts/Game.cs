@@ -83,7 +83,7 @@ public class Game : MonoBehaviour {
         {
 
 
-            highscores = list.Select(p => new KeyValuePair<int, float>(p.ID, p.score.getScore())).ToList();
+            highscores = list.Select(p => new KeyValuePair<int, float>(p.ID, p.Score.getScore())).ToList();
             highscores.Sort((p1, p2) => (int)(p2.Value - p1.Value));
             SceneManager.LoadScene("Highscore");
         }

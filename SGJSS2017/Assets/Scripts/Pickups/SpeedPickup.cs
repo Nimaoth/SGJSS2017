@@ -19,7 +19,7 @@ public class SpeedPickup : MovableObject
             Buff(p);
             Destroy(gameObject);
 
-            p.score.addScore(tag);
+            p.Score.addScore(tag);
 
             if (Clip != null)
             {

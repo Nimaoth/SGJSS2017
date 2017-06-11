@@ -1,18 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public const int MAX_HEALTH = 3;
+
     public GameObject Shockwave;
 
-    public int ID; 
-    public int maxHealth = 3;
+    public int ID;
     public int lives = 3;
     public float playerSpeed;
-    public float yAxisWrap = 4;
+    public Rect Bounds;
 
-    public Score score;
+    private Score score;
+    public Score Score
+    {
+        get
+        {
+            return score;
+        }
+    }
 
     private Rigidbody playerRigid;
 
@@ -20,13 +29,13 @@ public class Player : MonoBehaviour
 
     // sound
     private AudioClip fishSound;
-    
+
     //for Shot cooldown
     public float FIRE_COOLDOWN;
     private float fireTimerCounter;
 
     // ui
-    public Lives[] LiveBar;
+    private Lives[] LiveBar;
 
     // ParticleSystem for buffs
     public GameObject PickUpHealthParticleSystem;
@@ -86,11 +95,17 @@ public class Player : MonoBehaviour
         playerRigid.AddForce(force * 150, ForceMode.Acceleration);
 
         // dont move outside of screen
-        if (transform.position.y > yAxisWrap)
+        if (transform.position.y > Bounds.yMax)
             playerRigid.AddForce(new Vector3(0, -0.5f * playerRigid.velocity.magnitude, 0), ForceMode.Impulse);
 
-        if (transform.position.y < -yAxisWrap)
+        if (transform.position.y < Bounds.yMin)
             playerRigid.AddForce(new Vector3(0, 0.5f * playerRigid.velocity.magnitude, 0), ForceMode.Impulse);
+
+        if (transform.position.x > Bounds.xMax)
+            playerRigid.AddForce(new Vector3(-0.5f * playerRigid.velocity.magnitude, 0, 0), ForceMode.Impulse);
+
+        if (transform.position.x < Bounds.xMin)
+            playerRigid.AddForce(new Vector3(0.5f * playerRigid.velocity.magnitude, 0, 0), ForceMode.Impulse);
 
         // direction
         Vector3 dir = new Vector3(0, -Game.Instance.Speed, 0) * 1 + playerRigid.velocity;
@@ -171,8 +186,8 @@ public class Player : MonoBehaviour
         }
 
         lives++;
-        if (lives > maxHealth)
-            lives = maxHealth;
+        if (lives > MAX_HEALTH)
+            lives = MAX_HEALTH;
     }
 
     public void SpeedBuff(float duration, float amount)

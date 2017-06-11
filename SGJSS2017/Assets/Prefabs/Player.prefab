@@ -515,16 +515,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
   ID: 0
-  maxHealth: 3
   lives: 3
   playerSpeed: 10
-  yAxisWrap: 5
-  score: {fileID: 0}
+  Bounds:
+    serializedVersion: 2
+    x: -8.78
+    y: -4.8
+    width: 17.56
+    height: 9.6
   FIRE_COOLDOWN: 1
-  LiveBar:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   PickUpHealthParticleSystem: {fileID: 1926637357502118, guid: 271d5ef565d6efe4d86aa41a5c97fdc8,
     type: 2}
   SpeedBuffParticleSystem: {fileID: 1808907526878160, guid: 97038680a715b7d478f96b8d12234a3c,
