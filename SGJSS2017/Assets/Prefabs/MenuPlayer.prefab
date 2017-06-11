@@ -441,7 +441,7 @@ MonoBehaviour:
     y: -5.47
     width: 23.07
     height: 12.93
-  id: 0
+  id: 1
 --- !u!137 &137161366353842288
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -478,7 +478,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: b42bc0e0913cb0a4ab81536e613e6104, type: 3}
+  m_Mesh: {fileID: 4300002, guid: b42bc0e0913cb0a4ab81536e613e6104, type: 3}
   m_Bones:
   - {fileID: 4689187417214792}
   - {fileID: 4902213113023872}
