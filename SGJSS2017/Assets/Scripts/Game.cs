@@ -73,7 +73,7 @@ public class Game : MonoBehaviour {
     public void playerDied()
     {
         deathCounter++;
-        if (deathCounter == nextPlayerID - 1)
+        if (deathCounter == nextPlayerID - 2)
             SceneManager.LoadScene("EndScene");
     }
 
