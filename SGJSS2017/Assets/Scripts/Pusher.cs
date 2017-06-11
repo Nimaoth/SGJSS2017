@@ -39,7 +39,7 @@ public class Pusher : MovableObject
 
         if (Clip != null)
         {
-            AudioSource.PlayClipAtPoint(Clip, transform.position, Volume);
+            Game.PlayClip(Clip, Volume);
         }
 
         // destroy this game object
@@ -56,7 +56,7 @@ public class Pusher : MovableObject
         player.Push(force, Damage);
         player.Score.resetMultiplier();
 
-        Camera.main.GetComponent<ScreenShaker>().Shake(ScreenShake, 0.5f);
+        Camera.main.GetComponent<ScreenShaker>().Shake(ScreenShake, 0.3f);
     }
 
 }

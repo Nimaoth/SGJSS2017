@@ -23,7 +23,7 @@ public class SpeedPickup : MovableObject
 
             if (Clip != null)
             {
-                AudioSource.PlayClipAtPoint(Clip, p.transform.position, Volume);
+                Game.PlayClip(Clip, Volume);
             }
         }
     }

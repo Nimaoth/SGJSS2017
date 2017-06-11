@@ -68,7 +68,7 @@ public class Button : MonoBehaviour {
 
     public void load()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScenePerspective");
     }
 
     public void quit()

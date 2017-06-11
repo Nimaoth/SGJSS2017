@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public int ID;
     public int lives = 3;
     public float playerSpeed;
-    public Rect Bounds;
 
     private Score score;
     public Score Score
@@ -95,16 +94,17 @@ public class Player : MonoBehaviour
         playerRigid.AddForce(force * 150, ForceMode.Acceleration);
 
         // dont move outside of screen
-        if (transform.position.y > Bounds.yMax)
+        Rect bounds = Game.Instance.Bounds;
+        if (transform.position.y > bounds.yMax)
             playerRigid.AddForce(new Vector3(0, -0.5f * playerRigid.velocity.magnitude, 0), ForceMode.Impulse);
 
-        if (transform.position.y < Bounds.yMin)
+        if (transform.position.y < bounds.yMin)
             playerRigid.AddForce(new Vector3(0, 0.5f * playerRigid.velocity.magnitude, 0), ForceMode.Impulse);
 
-        if (transform.position.x > Bounds.xMax)
+        if (transform.position.x > bounds.xMax)
             playerRigid.AddForce(new Vector3(-0.5f * playerRigid.velocity.magnitude, 0, 0), ForceMode.Impulse);
 
-        if (transform.position.x < Bounds.xMin)
+        if (transform.position.x < bounds.xMin)
             playerRigid.AddForce(new Vector3(0.5f * playerRigid.velocity.magnitude, 0, 0), ForceMode.Impulse);
 
         // direction
@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
                 fireTimerCounter = FIRE_COOLDOWN;
 
 
-                AudioSource.PlayClipAtPoint(fishSound, transform.position, 1);
+                Game.PlayClip(fishSound, 1);
             }
         }
 
@@ -136,6 +136,10 @@ public class Player : MonoBehaviour
         }
 
         #endregion
+
+        var v = transform.position;
+        v.z = 0;
+        transform.position = v;
     }
 
     public void Push(Vector3 force, bool damage = false, Player player = null)

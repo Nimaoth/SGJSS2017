@@ -45,7 +45,6 @@ public class Border : MonoBehaviour {
         {
             Transform player = collision.transform.parent;
             Transform playerTransform = player.transform;
-            Debug.Log(playerTransform.name);
             Player pl = player.GetComponent<Player>();
             Score score = pl.Score;
 

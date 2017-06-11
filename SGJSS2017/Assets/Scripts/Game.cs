@@ -4,7 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Game : MonoBehaviour {
+public class Game : MonoBehaviour
+{
 
     private static Game s_instance;
 
@@ -21,8 +22,10 @@ public class Game : MonoBehaviour {
     public float SpeedIncrease;
 
     public AudioClip[] PlayerHitSounds;
+    public AudioClip EndGameSound;
 
     public float AmbientDecrease;
+    public Rect Bounds;
 
 
     private int nextPlayerID;
@@ -38,6 +41,10 @@ public class Game : MonoBehaviour {
         list = new List<Player>();
     }
 
+    private void Start()
+    {
+        RenderSettings.ambientLight = new Color(1, 1, 1);
+    }
 
     private void Update()
     {
@@ -57,6 +64,7 @@ public class Game : MonoBehaviour {
             amb.b = 1.1f * min;
 
         RenderSettings.ambientLight = amb;
+
     }
 
     public void LoadScene(string scene, float time = 0.0f)
@@ -73,7 +81,7 @@ public class Game : MonoBehaviour {
     public int getPlayerID(Player player)
     {
         list.Add(player);
-        return nextPlayerID++;     
+        return nextPlayerID++;
     }
 
     public void playerDied()
@@ -81,17 +89,35 @@ public class Game : MonoBehaviour {
         deathCounter++;
         if (nextPlayerID == 2 || deathCounter == nextPlayerID - 2)
         {
-
+            GetComponent<AudioSource>().Play();
 
             highscores = list.Select(p => new KeyValuePair<int, float>(p.ID, p.Score.getScore())).ToList();
             highscores.Sort((p1, p2) => (int)(p2.Value - p1.Value));
-            SceneManager.LoadScene("Highscore");
+
+            LoadScene("Highscore", 2);
         }
-            
+
     }
 
     public AudioClip getPlayerHitSound(int id)
     {
         return PlayerHitSounds[id - 1];
+    }
+
+    public static AudioSource PlayClip(AudioClip clip, float volume)
+    {
+        var tempGO = new GameObject("TempAudio"); // create the temp object
+        var aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
+        aSource.clip = clip; // define the clip
+        aSource.spatialBlend = 0;
+        aSource.volume = volume;
+        aSource.Play(); // start the sound
+        Destroy(tempGO, clip.length); // destroy object after clip duration
+        return aSource; // return the AudioSource reference
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(new Vector3(Bounds.center.x, Bounds.center.y, 0), new Vector3(Bounds.width, Bounds.height, 1));
     }
 }
