@@ -43,9 +43,7 @@ public class Game : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(RenderSettings.ambientLight);
         RenderSettings.ambientLight = new Color(1, 1, 1);
-        Debug.Log("Setting ambient light to: " + RenderSettings.ambientLight);
     }
 
     private void Update()
