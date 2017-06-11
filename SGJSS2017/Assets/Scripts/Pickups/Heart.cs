@@ -41,7 +41,7 @@ public class Heart : MonoBehaviour {
 
             if (Clip != null)
             {
-                AudioSource.PlayClipAtPoint(Clip, p.transform.position, Volume);
+                Game.PlayClip(Clip, Volume);
             }
         }
     }

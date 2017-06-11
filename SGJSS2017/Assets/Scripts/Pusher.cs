@@ -39,7 +39,7 @@ public class Pusher : MovableObject
 
         if (Clip != null)
         {
-            AudioSource.PlayClipAtPoint(Clip, transform.position, Volume);
+            Game.PlayClip(Clip, Volume);
         }
 
         // destroy this game object
