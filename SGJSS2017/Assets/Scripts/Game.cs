@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,10 +28,14 @@ public class Game : MonoBehaviour {
     private int nextPlayerID;
     private float deathCounter;
 
+    private List<Player> list;
+    public static List<KeyValuePair<int, float>> highscores;
+
     private void Awake()
     {
         s_instance = this;
         nextPlayerID = 1;
+        list = new List<Player>();
     }
 
 
@@ -65,16 +70,24 @@ public class Game : MonoBehaviour {
         SceneManager.LoadScene(scene);
     }
 
-    public int getPlayerID()
+    public int getPlayerID(Player player)
     {
-        return nextPlayerID++;
+        list.Add(player);
+        return nextPlayerID++;     
     }
 
     public void playerDied()
     {
         deathCounter++;
-        if (deathCounter == nextPlayerID - 1)
-            SceneManager.LoadScene("EndScene");
+        if (nextPlayerID == 2 || deathCounter == nextPlayerID - 2)
+        {
+
+
+            highscores = list.Select(p => new KeyValuePair<int, float>(p.ID, p.Score.getScore())).ToList();
+            highscores.Sort((p1, p2) => (int)(p2.Value - p1.Value));
+            SceneManager.LoadScene("Highscore");
+        }
+            
     }
 
     public AudioClip getPlayerHitSound(int id)

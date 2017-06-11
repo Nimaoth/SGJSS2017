@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4077961941447952}
   - component: {fileID: 114700887757058744}
   - component: {fileID: 54883282841217218}
+  - component: {fileID: 114531974344670618}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -219,7 +220,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4159665388858458}
-  - component: {fileID: 136010507607681712}
+  - component: {fileID: 135330239656580560}
   m_Layer: 10
   m_Name: Model
   m_TagString: Player
@@ -490,6 +491,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114531974344670618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074102969906898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6695a56ed374a524ba8294d79fb72b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114700887757058744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,26 +515,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shockwave: {fileID: 1437867772366216, guid: 0148b0001e8400d4c97bab7e08419302, type: 2}
   ID: 0
-  maxHealth: 3
   lives: 3
   playerSpeed: 10
-  yAxisWrap: 5
-  horizontal: Horizontal
-  vertical: Vertical
-  fire: Fire1
+  Bounds:
+    serializedVersion: 2
+    x: -8.78
+    y: -4.8
+    width: 17.56
+    height: 9.6
   FIRE_COOLDOWN: 1
-  LiveBar:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   PickUpHealthParticleSystem: {fileID: 1926637357502118, guid: 271d5ef565d6efe4d86aa41a5c97fdc8,
     type: 2}
   SpeedBuffParticleSystem: {fileID: 1808907526878160, guid: 97038680a715b7d478f96b8d12234a3c,
     type: 2}
   SpeedDebuffParticleSystem: {fileID: 1564650984989046, guid: 67d512b26decaff4ab55940314c75a2c,
     type: 2}
---- !u!136 &136010507607681712
-CapsuleCollider:
+--- !u!135 &135330239656580560
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -530,10 +539,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.35
-  m_Height: 1.55
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.62
+  m_Center: {x: 0, y: 0.19, z: 0.2}
 --- !u!137 &137273932764270524
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -570,7 +578,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: b42bc0e0913cb0a4ab81536e613e6104, type: 3}
+  m_Mesh: {fileID: 4300002, guid: b42bc0e0913cb0a4ab81536e613e6104, type: 3}
   m_Bones:
   - {fileID: 4985688039291172}
   - {fileID: 4067024279730982}

@@ -16,6 +16,7 @@ ModelImporter:
     100016: //RootNode
     100018: Tail
     100020: Upper_Body
+    100022: Plane_001
     400000: Armature
     400002: Center
     400004: Connector
@@ -27,10 +28,16 @@ ModelImporter:
     400016: //RootNode
     400018: Tail
     400020: Upper_Body
+    400022: Plane_001
+    2300000: Plane_001
+    3300000: Plane_001
     4300000: Plane
+    4300002: Plane_001
     7400000: Default Take
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Plane
+    13700002: Plane_001
   materials:
     importMaterials: 1
     materialName: 0
@@ -47,7 +54,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -92,7 +99,7 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2

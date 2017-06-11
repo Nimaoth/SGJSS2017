@@ -17,6 +17,7 @@ public class Score : MonoBehaviour {
     private float currentScore;
     private float multiplier = 1.0f;
     private float lastReset;
+    private bool dead = false;
 
 	// Use this for initialization
 	void Start()
@@ -30,19 +31,28 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
     {
-        if (tag == "right")
-            sc.text = (int)currentScore + " :Score\nx" + multiplier;
-        else
-            sc.text = "Score: " + (int)currentScore;
-
-        multiplierText.text = "x " + multiplier.ToString("0.00");
-
-        currentScore += multiplier * 10 * Time.deltaTime;
-
-        if (Time.time - lastReset > 5)
+        if (!dead)
         {
-            multiplier += 0.1f * Time.deltaTime;
+            if (tag == "right")
+                sc.text = (int)currentScore + " :Score\nx" + multiplier;
+            else
+                sc.text = "Score: " + (int)currentScore;
+
+            multiplierText.text = "x " + multiplier.ToString("0.00");
+
+            currentScore += multiplier * 10 * Time.deltaTime;
+
+            if (Time.time - lastReset > 5)
+            {
+                multiplier += 0.1f * Time.deltaTime;
+            }
+
         }
+    }
+
+    public float getScore()
+    {
+        return currentScore;
     }
 
     public void resetMultiplier()
@@ -60,7 +70,7 @@ public class Score : MonoBehaviour {
                 break;
 
             case "SlowDown":
-                currentScore -= 35;
+                currentScore = Mathf.Clamp(currentScore - 35, 0, float.MaxValue);
                 break;
 
             case "Mine":
@@ -80,7 +90,8 @@ public class Score : MonoBehaviour {
                 break;
 
             case "Death":
-                currentScore -= 1000;
+                currentScore = Mathf.Clamp(currentScore - 1000, 0, float.MaxValue); ;
+                dead = true;
                 break;
         }
     }
