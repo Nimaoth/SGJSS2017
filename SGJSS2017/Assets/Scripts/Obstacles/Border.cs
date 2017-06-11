@@ -38,4 +38,18 @@ public class Border : MonoBehaviour {
             newObj.transform.localScale = transform.localScale;
         }
     }
+
+     void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "Player")
+        {
+            Transform player = collision.transform.parent;
+            Transform playerTransform = player.transform;
+            Debug.Log(playerTransform.name);
+            Player pl = player.GetComponent<Player>();
+            Score score = pl.score;
+
+            score.resetMultiplier();
+        }
+    }
 }
