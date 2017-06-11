@@ -11,17 +11,17 @@ public class DisplayScore : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-        Color red = new Color(207, 0, 10);
-        Color blue = new Color(22, 41, 85);
-        Color green = new Color(53, 111, 19);
-        Color yellow = new Color(255, 174, 11);
-        
+        Highscore.text = "";
 
         for (int i = 0; i < Game.highscores.Count; i++)
         {
             player = Game.highscores[i].Key;
             value = (int) Game.highscores[i].Value;
+
+            Debug.Log("Highscore: " + Highscore);
+            Debug.Log("Text: " + Highscore.text);
+            Debug.Log("Player: " + player);
+            Debug.Log("Value: " + value);
 
             Highscore.text += "Player " + player + ": " + value + "\n" + "\n";
         }

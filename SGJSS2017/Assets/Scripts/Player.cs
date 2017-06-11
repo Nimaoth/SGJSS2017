@@ -154,13 +154,12 @@ public class Player : MonoBehaviour
 
         if (lives <= 0)
         {
+            score.addScore("Death");
             lives = 0;
             // TODO game over
             Destroy(gameObject);
 
             Game.Instance.playerDied();
-
-            score.addScore("Death");
         }
     }
 
