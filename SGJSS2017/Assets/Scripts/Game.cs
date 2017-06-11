@@ -79,7 +79,7 @@ public class Game : MonoBehaviour {
     public void playerDied()
     {
         deathCounter++;
-        if (deathCounter == nextPlayerID - 2)
+        if (nextPlayerID == 2 || deathCounter == nextPlayerID - 2)
         {
 
 

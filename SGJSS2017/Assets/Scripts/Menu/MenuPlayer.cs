@@ -11,6 +11,8 @@ public class MenuPlayer : MonoBehaviour {
 
     private Transform modelTransform;
 
+    public int id;
+
     // Use this for initialization
     void Start () {
         modelTransform = transform.Find("Model");
@@ -25,8 +27,8 @@ public class MenuPlayer : MonoBehaviour {
 
         //player Movement
         Vector3 force = new Vector3();
-        force.x = Input.GetAxis("Horizontal1") * speed * Time.deltaTime;
-        force.y = Input.GetAxis("Vertical1") * speed * Time.deltaTime;
+        force.x = Input.GetAxis("Horizontal" + id) * speed * Time.deltaTime;
+        force.y = Input.GetAxis("Vertical" + id) * speed * Time.deltaTime;
         playerRigid.AddForce(force * 150, ForceMode.Acceleration);
 
         // dont move outside of screen

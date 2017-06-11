@@ -18,11 +18,6 @@ public class DisplayScore : MonoBehaviour {
             player = Game.highscores[i].Key;
             value = (int) Game.highscores[i].Value;
 
-            Debug.Log("Highscore: " + Highscore);
-            Debug.Log("Text: " + Highscore.text);
-            Debug.Log("Player: " + player);
-            Debug.Log("Value: " + value);
-
             Highscore.text += "Player " + player + ": " + value + "\n" + "\n";
         }
 	}
