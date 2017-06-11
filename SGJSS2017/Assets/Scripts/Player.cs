@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
     private Player lastPusher;
     private float lastPushTime;
 
+    public Renderer rend;
+
     // Use this for initialization
     void Start()
     {
@@ -72,6 +74,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float speed = playerSpeed;
         if (hasSpeedBuff)
         {
@@ -126,6 +129,8 @@ public class Player : MonoBehaviour
 
 
                 Game.PlayClip(fishSound, 1);
+
+                StartCoroutine(Blow());
             }
         }
 
@@ -140,6 +145,22 @@ public class Player : MonoBehaviour
         var v = transform.position;
         v.z = 0;
         transform.position = v;
+    }
+
+    IEnumerator Blow()
+    {
+        float t = Time.time;
+
+        float s = 0;
+        while (Time.time - t < 0.3f)
+        {
+            s = (Time.time - t) * 3 * 10f / 3f * Mathf.PI;
+
+            rend.material.SetFloat("_Schlider", Mathf.Sin(s) + 1);
+            yield return new WaitForEndOfFrame();
+        }
+        rend.material.SetFloat("_Schlider", 0);
+
     }
 
     public void Push(Vector3 force, bool damage = false, Player player = null)

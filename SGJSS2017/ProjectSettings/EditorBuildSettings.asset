@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ViolaScene.unity
     guid: 64652503f14aea544aef125f16f125ee
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: 0f7536ff11bee914bac6ffeaae267de0
   - enabled: 1
@@ -19,4 +19,4 @@ EditorBuildSettings:
     guid: 5498d45d4959e504381be539fad50a53
   - enabled: 1
     path: Assets/Scenes/MainScenePerspective.unity
-    guid: 00000000000000000000000000000000
+    guid: c1de24c7e25b9694081d810909496666

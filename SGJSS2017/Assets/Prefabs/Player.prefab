@@ -505,12 +505,6 @@ MonoBehaviour:
   ID: 0
   lives: 3
   playerSpeed: 10
-  Bounds:
-    serializedVersion: 2
-    x: -8.78
-    y: -4.8
-    width: 17.56
-    height: 9.6
   FIRE_COOLDOWN: 1
   PickUpHealthParticleSystem: {fileID: 1926637357502118, guid: 271d5ef565d6efe4d86aa41a5c97fdc8,
     type: 2}
@@ -518,6 +512,7 @@ MonoBehaviour:
     type: 2}
   SpeedDebuffParticleSystem: {fileID: 1564650984989046, guid: 67d512b26decaff4ab55940314c75a2c,
     type: 2}
+  rend: {fileID: 137273932764270524}
 --- !u!135 &135330239656580560
 SphereCollider:
   m_ObjectHideFlags: 1
