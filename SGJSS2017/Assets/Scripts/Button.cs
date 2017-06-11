@@ -11,11 +11,20 @@ public class Button : MonoBehaviour {
     private float originalY;
     private float originalRZ;
 
-    float randomP;
-    float randomR;
+    private float randomP;
+    private float randomR;
+
+    private bool rising = false;
+
+    private float startTime;
+
+    public bool selectOnStart = false;
+    public float gap = 0.2f;
 
 	// Use this for initialization
 	void Start () {
+        if (selectOnStart)
+            GetComponent<UnityEngine.UI.Button>().Select();
 
         originalY = rt.position.y;
 
@@ -24,33 +33,58 @@ public class Button : MonoBehaviour {
         randomP = Random.Range(1f, 2f);
         randomR = Random.Range(1f, 2f);
     
-        StartCoroutine(rise());
+        //StartCoroutine(rise());
 
+        end = new Vector3(rt.position.x, rt.position.y + gap, rt.position.z);
+        rt.Translate(new Vector3(0, -30, 0), Space.World);
+        start = new Vector3(rt.position.x, rt.position.y, rt.position.z);
+
+        rising = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
-            Vector3 p = new Vector3(rt.position.x, originalY + Mathf.Sin(Time.time * randomP) * 4, rt.position.z);
+        if (rising)
+        {
+            if (rt.position.y < end.y - gap)
+            {
+                rt.position = Vector3.Lerp(rt.position, end, Time.deltaTime * 10.0f);
+            }
+            else
+            {
+                rising = false;
+                startTime = Time.time;
+            }
+        }
+        else
+        {
+            Vector3 p = new Vector3(rt.position.x, originalY + Mathf.Sin((Time.time - startTime) * randomP) * 0.5f, rt.position.z);
             rt.position = p;
 
             Quaternion q = new Quaternion();
-            Vector3 eulerR = new Vector3(rt.rotation.eulerAngles.x, rt.rotation.eulerAngles.y, originalRZ + Mathf.Sin(Time.time * randomR) * 3);
+            Vector3 eulerR = new Vector3(rt.rotation.eulerAngles.x, rt.rotation.eulerAngles.y, originalRZ + Mathf.Sin((Time.time - startTime) * randomR) * 3);
             q.eulerAngles = eulerR;
             rt.rotation = q;
+        }
 	}
 
     IEnumerator rise()
     {
-        end = new Vector3(rt.position.x, rt.position.y, rt.position.z);
-        rt.Translate(new Vector3(0, -60, 0), Space.World);
-        start = new Vector3(rt.position.x, rt.position.y, rt.position.z);
+        rising = true;
+
+
         int step = 0;
-        while (rt.position.y < end.y)
+        while (rt.position.y < end.y - 0.1f)
         {
-            yield return new WaitForSeconds(0.01f);
-            rt.position = Vector3.Lerp(start,end, 0.02f * step);
-            step++;
+            //yield return new WaitForSeconds(0.01f);
+            //rt.position = Vector3.Lerp(start, end, 0.02f * step);
+            //step++;
+
+            rt.position = Vector3.Lerp(rt.position, end, Time.deltaTime * 10.0f);
+            yield return null;
         }
+        rising = false;
+        startTime = Time.time;
     }
 
     public void load()

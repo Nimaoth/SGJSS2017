@@ -36,7 +36,7 @@ public class BubbleTitle : MonoBehaviour {
         RenderSettings.ambientLight = new Color(1, 1, 1);
 
         //give every bubble a random size
-        float random = Random.Range(1.4f, 1.6f);
+        float random = Random.Range(2.2f, 3.3f);
         transform.localScale = new Vector3(random, random, random);
         target = new Vector3(transform.position.x, transform.position.y);
 
@@ -74,17 +74,22 @@ public class BubbleTitle : MonoBehaviour {
         }
 
         acc += steering;
-        Vector3 mousePos = mousePosi.mousePos;
-        mousePos.z = transform.position.z;
+        
+        foreach (var bf in BubbleManager.Instance.Forces)
+        {
+            var pos = bf.Location;
+            pos.z = transform.position.z;
 
-        Vector3 dir = transform.position - mousePos;
-        float dist = dir.sqrMagnitude;
+            Vector3 dir = transform.position - pos;
+            float dist = dir.sqrMagnitude;
+            dist *= dist;
 
-        float strength = mouseForce / dist;
-        if (strength > maxForce)
-            strength = maxForce;
-        acc += dir.normalized * strength;
+            float strength = bf.Strength / dist;
+            if (strength > maxForce)
+                strength = maxForce;
+            acc += dir.normalized * strength;
 
+        }
 
         vel += acc * Time.deltaTime;
         transform.position += vel * Time.deltaTime;
