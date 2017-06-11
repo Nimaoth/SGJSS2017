@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ID = Game.Instance.getPlayerID();
+        ID = Game.Instance.getPlayerID(this);
         playerRigid = GetComponent<Rigidbody>();
         ModelTransform = transform.Find("Model");
 
@@ -154,13 +154,12 @@ public class Player : MonoBehaviour
 
         if (lives <= 0)
         {
+            score.addScore("Death");
             lives = 0;
             // TODO game over
             Destroy(gameObject);
 
             Game.Instance.playerDied();
-
-            score.addScore("Death");
         }
     }
 

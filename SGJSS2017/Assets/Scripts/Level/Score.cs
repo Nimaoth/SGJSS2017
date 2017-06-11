@@ -50,6 +50,11 @@ public class Score : MonoBehaviour {
         }
     }
 
+    public float getScore()
+    {
+        return currentScore;
+    }
+
     public void resetMultiplier()
     {
         multiplier = 1;
