@@ -11,17 +11,15 @@ public class bubble : MonoBehaviour {
     private Vector3 steering;
     private float maxSpeed = 15;
     private float maxForce = 25;
-    private float mouseForce = 15;
 
     public GameObject bubbleExplosion;
     public Renderer r;
 
-    MousePosScript mousePosi;
-
     public LayerMask mask;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         //Set level
         RenderSettings.ambientLight = new Color(1, 1, 1);
@@ -33,12 +31,8 @@ public class bubble : MonoBehaviour {
 
         vel = new Vector3();
         vel = new Vector3(Random.value * 2 - 1, Random.value * 2 - 1);
-
-        GameObject plane = GameObject.Find("Plane");
-        mousePosi = plane.GetComponent<MousePosScript>();
-
     }
-	
+    	
 	// Update is called once per frame
 	void Update () {
 

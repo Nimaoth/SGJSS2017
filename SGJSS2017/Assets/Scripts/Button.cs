@@ -7,7 +7,6 @@ public class Button : MonoBehaviour {
 
     public RectTransform rt;
     private Vector3 end;
-    private Vector3 start;
     private float originalY;
     private float originalRZ;
 
@@ -37,7 +36,6 @@ public class Button : MonoBehaviour {
 
         end = new Vector3(rt.position.x, rt.position.y + gap, rt.position.z);
         rt.Translate(new Vector3(0, -30, 0), Space.World);
-        start = new Vector3(rt.position.x, rt.position.y, rt.position.z);
 
         rising = true;
     }
@@ -67,25 +65,6 @@ public class Button : MonoBehaviour {
             rt.rotation = q;
         }
 	}
-
-    IEnumerator rise()
-    {
-        rising = true;
-
-
-        int step = 0;
-        while (rt.position.y < end.y - 0.1f)
-        {
-            //yield return new WaitForSeconds(0.01f);
-            //rt.position = Vector3.Lerp(start, end, 0.02f * step);
-            //step++;
-
-            rt.position = Vector3.Lerp(rt.position, end, Time.deltaTime * 10.0f);
-            yield return null;
-        }
-        rising = false;
-        startTime = Time.time;
-    }
 
     public void load()
     {

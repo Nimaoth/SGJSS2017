@@ -11,22 +11,8 @@ public class BubbleTitle : MonoBehaviour {
     private Vector3 steering;
     private float maxSpeed = 15;
     private float maxForce = 25;
-    private float mouseForce = 15;
-    private float counter = 5;
-
-    MousePosScript mousePosi;
 
     public LayerMask mask;
-
-    /*private void Awake()
-    {
-        StartCoroutine(create());
-    }
-
-    IEnumerator create()
-    {
-
-    }*/
 
     // Use this for initialization
     void Start()
@@ -42,10 +28,6 @@ public class BubbleTitle : MonoBehaviour {
 
         vel = new Vector3();
         vel = new Vector3(Random.value * 2 - 1, Random.value * 2 - 1);
-
-        GameObject plane = GameObject.Find("Plane");
-        mousePosi = plane.GetComponent<MousePosScript>();
-
     }
 
     // Update is called once per frame
