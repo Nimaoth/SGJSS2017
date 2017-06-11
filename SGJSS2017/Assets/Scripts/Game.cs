@@ -64,6 +64,7 @@ public class Game : MonoBehaviour
             amb.b = 1.1f * min;
 
         RenderSettings.ambientLight = amb;
+
     }
 
     public void LoadScene(string scene, float time = 0.0f)

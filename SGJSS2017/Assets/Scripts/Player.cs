@@ -136,6 +136,10 @@ public class Player : MonoBehaviour
         }
 
         #endregion
+
+        var v = transform.position;
+        v.z = 0;
+        transform.position = v;
     }
 
     public void Push(Vector3 force, bool damage = false, Player player = null)
