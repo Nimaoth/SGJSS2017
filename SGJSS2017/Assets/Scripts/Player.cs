@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ID = Game.Instance.getPlayerID();
+        ID = Game.Instance.getPlayerID(this);
         playerRigid = GetComponent<Rigidbody>();
         ModelTransform = transform.Find("Model");
 
