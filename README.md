@@ -1,2 +1,2 @@
-# SGJSS2017
+# Puffy
 Semester Game Jam Summer 2017
